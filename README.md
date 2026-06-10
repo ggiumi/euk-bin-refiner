@@ -1,8 +1,3 @@
-# euk-bin-refiner
-
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
 **A bin-refinement algorithm for eukaryotic Metagenome-Assembled Genomes (MAGs), inspired by [DAS_Tool](https://github.com/cmks/DAS_Tool) but adapted for BUSCO eukaryotic markers.**
 
 ## Why this tool?
@@ -101,21 +96,6 @@ At each iteration the bin with the highest current `score = (C − α·D)/100` i
 
 The key technical detail is the **exact BUSCO recomputation**: when a bin loses contigs, its new C and D are computed by looking at which markers' contigs are still present, not by naive proportional scaling. This avoids the *phantom winner* artifact where bins appear to retain quality they have actually lost.
 
-For a more detailed description, see [`docs/algorithm.md`](docs/algorithm.md).
-
-## How is this different from DAS_Tool?
-
-| | DAS_Tool | euk-bin-refiner |
-|--|----------|-----------------|
-| Marker set | Single-copy bacterial (107) | BUSCO `eukaryota_odb10` (255) |
-| Target taxa | Prokaryotes | Eukaryotes |
-| Score recomputation | Approximate (length-weighted) | Exact (per-marker contig re-check) |
-| Loser tracking | No | Yes (`bin_relationships.tsv`) |
-| Dependencies | DIAMOND, USEARCH, R | Python + pandas only |
-| Speed | Fast | Fast (BUSCO must be precomputed) |
-
-For full discussion see [`docs/comparison_dastool.md`](docs/comparison_dastool.md).
-
 ## Parameters
 
 | Parameter | Default | Description |
@@ -124,22 +104,6 @@ For full discussion see [`docs/comparison_dastool.md`](docs/comparison_dastool.m
 | `--min-score` | 0.05 | Bins with score below this are not eligible to win (but are still tracked, in case they donate contigs). |
 | `--min-contigs` | 10 | Bins with fewer contigs are dropped. |
 | `--write-fasta` | off | If set, write cleaned FASTA files of the winning bins. |
-
-## Citation
-
-If you use `euk-bin-refiner` in your research, please cite:
-
-```
-[Authors]. euk-bin-refiner: BUSCO-driven bin refinement for eukaryotic
-metagenome-assembled genomes. GitHub repository, 2026.
-https://github.com/<you>/euk-bin-refiner
-```
-
-A `CITATION.cff` file is included for citation management software.
-
-## License
-
-[MIT](LICENSE) — free to use, modify and redistribute, including commercial purposes, with attribution.
 
 ## Acknowledgements
 
