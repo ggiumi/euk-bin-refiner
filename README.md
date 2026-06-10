@@ -7,7 +7,7 @@ Recovering eukaryotic MAGs from environmental metagenomes typically requires run
 `euk-bin-refiner` solves the same problem for eukaryotic data by:
 
 1. **Using BUSCO eukaryotic markers** (`eukaryota_odb10`) as the quality signal.
-2. **Exactly recomputing completeness (C) and duplication (D)** at every iteration of contig redistribution — avoiding the "phantom winner" artifact where naive score scaling overestimates remaining quality.
+2. **Exactly recomputing completeness (C) and duplication (D)** at every iteration of contig redistribution using the full_table.tsv given by BUSCO.
 3. **Tracking the full history** of which losing bins gave up contigs to which winners, so chimeric / overlapping bins can be diagnosed.
 
 The result is a **non-redundant set of high-quality eukaryotic bins**, each owning a unique set of contigs.
@@ -55,7 +55,7 @@ data/all_bins/
 └── ...
 ```
 
-Recognized prefixes (case-insensitive): `concoct`, `maxbin`, `metabat`, `remag`, `merged`. Anything else falls under `Unknown`.
+Recognized prefixes: `concoct`, `maxbin`, `metabat`, `remag`, `merged`. Anything else falls under `Unknown`.
 
 ### BUSCO results
 
@@ -94,7 +94,7 @@ All outputs land in `--out-dir/`:
 
 At each iteration the bin with the highest current `score = (C − α·D)/100` is selected as a winner. All its current contigs are assigned to it. Every other bin then **loses** those overlapping contigs, and its BUSCO is **recomputed from scratch** by re-evaluating the per-marker `full_table.tsv` against the contigs that remain. The loop continues until no remaining bin has `score ≥ min_score`.
 
-The key technical detail is the **exact BUSCO recomputation**: when a bin loses contigs, its new C and D are computed by looking at which markers' contigs are still present, not by naive proportional scaling. This avoids the *phantom winner* artifact where bins appear to retain quality they have actually lost.
+The detail is the **exact BUSCO recomputation**: when a bin loses contigs, its new C and D are computed by looking at which markers' contigs are still present, not by naive proportional scaling. This avoids the *phantom winner* artifact where bins appear to retain quality they have actually lost.
 
 ## Parameters
 
