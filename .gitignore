@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Mac/IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Data (don't commit large files)
+*.fa
+*.fasta
+*.fna
+*.faa
+*.aa
+*.fa.gz
+*.dmnd
+data/
+results/
+examples/example_bins/
+examples/example_output/
+
+# Logs
+*.log
+logs/

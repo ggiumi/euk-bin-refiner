@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "euk-bin-refiner: BUSCO-driven bin refinement for eukaryotic MAGs"
+authors:
+  - family-names: "[Your last name]"
+    given-names: "[Your first name]"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+date-released: 2026-06-01
+url: "https://github.com/<you>/euk-bin-refiner"
+license: MIT
+keywords:
+  - metagenomics
+  - eukaryotes
+  - MAGs
+  - BUSCO
+  - bin refinement
+  - DAS_Tool
