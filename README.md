@@ -17,12 +17,12 @@ The result is a **non-redundant set of high-quality eukaryotic bins**, each owni
 ### Install
 
 ```bash
-git clone https://github.com/<you>/euk-bin-refiner.git
+git clone https://github.com/ggiumi/euk-bin-refiner.git
 cd euk-bin-refiner
 pip install -r requirements.txt
 ```
 
-Dependencies: `python>=3.8`, `pandas>=1.3`. That's it.
+Dependencies: `python>=3.8`, `pandas>=1.3`.
 
 ### Run
 
