@@ -1,8 +1,8 @@
-**A bin-refinement algorithm for eukaryotic Metagenome-Assembled Genomes (MAGs), inspired by [DAS_Tool](https://github.com/cmks/DAS_Tool) but adapted for BUSCO eukaryotic markers.**
+**A bin refinement algorithm for eukaryotic Metagenome-Assembled Genomes (MAGs), inspired by [DAS_Tool](https://github.com/cmks/DAS_Tool) but adapted for BUSCO eukaryotic markers.**
 
 ## Why this tool?
 
-Recovering eukaryotic MAGs from environmental metagenomes typically requires running multiple binners in parallel (e.g. CONCOCT, MaxBin, MetaBAT, REMAG). These tools produce **overlapping bins** that share many contigs, leading to inflated counts and chimeric reconstructions if used as-is. DAS_Tool is the standard solution — but its bacterial single-copy markers do not work for eukaryotes.
+Recovering eukaryotic MAGs from environmental metagenomes typically requires running multiple binners in parallel (e.g. CONCOCT, MaxBin, MetaBAT, REMAG). These tools produce **overlapping bins** that share many contigs. DAS_Tool is the standard solution, but its bacterial single-copy markers do not work for eukaryotes.
 
 `euk-bin-refiner` solves the same problem for eukaryotic data by:
 
@@ -10,7 +10,7 @@ Recovering eukaryotic MAGs from environmental metagenomes typically requires run
 2. **Exactly recomputing completeness (C) and duplication (D)** at every iteration of contig redistribution using the full_table.tsv given by BUSCO.
 3. **Tracking the full history** of which losing bins gave up contigs to which winners, so chimeric / overlapping bins can be diagnosed.
 
-The result is a **non-redundant set of high-quality eukaryotic bins**, each owning a unique set of contigs.
+The result is a **non-redundant set of high quality eukaryotic bins**, each owning a unique set of contigs.
 
 ## Quick start
 
